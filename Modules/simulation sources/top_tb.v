@@ -16,16 +16,13 @@ module top_tb(
     forever #5 clk = ~clk;
   end
 
-  // Reset pulse
   initial begin
     rst = 1'b1;
     repeat (3) @(posedge clk);
     rst = 1'b0;
   end
 
-  // Run then print registers
   initial begin
-    // give time for fetch/execute cycles after reset
     repeat (40) @(posedge clk);
 
     for (i = 0; i < 32; i = i + 1) begin
